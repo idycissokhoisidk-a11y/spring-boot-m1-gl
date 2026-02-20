@@ -6,6 +6,8 @@ import com.endtoend.demo.dto.RegisterRequest;
 import com.endtoend.demo.entity.Role;
 import com.endtoend.demo.entity.User;
 import com.endtoend.demo.repositories.UserRepository;
+import com.endtoend.demo.services.interfaces.IAuthService;
+import com.endtoend.demo.services.interfaces.IJwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -14,11 +16,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class AuthService {
+public class AuthService implements IAuthService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final JwtService jwtService;
+    private final IJwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
     public AuthResponse register(RegisterRequest request) {

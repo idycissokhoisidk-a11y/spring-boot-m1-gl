@@ -3,7 +3,7 @@ package com.endtoend.demo.controllers;
 import com.endtoend.demo.dto.AuthRequest;
 import com.endtoend.demo.dto.AuthResponse;
 import com.endtoend.demo.dto.RegisterRequest;
-import com.endtoend.demo.services.AuthService;
+import com.endtoend.demo.services.interfaces.IAuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class AuthController {
 
-    private final AuthService authService;
+    private final IAuthService authService;
 
     @PostMapping("/register")
     public ResponseEntity<AuthResponse> register(@RequestBody RegisterRequest request) {
